@@ -6,9 +6,9 @@ public class CheckoutService{
 
 
 
-  public CheckoutService(ExchangeRateClient e){
-      this.exchangeRateClient = e;
-  }
+    public CheckoutService(ExchangeRateClient exchangeRateClient){
+        this.exchangeRateClient = exchangeRateClient;
+    }
 
 
     double calculatePrice (String sku, int quantity) {

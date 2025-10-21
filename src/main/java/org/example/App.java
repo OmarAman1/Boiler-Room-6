@@ -4,28 +4,18 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        // Read sku and quantity -> total price
         Scanner scanner = new Scanner(System.in);
-        ExchangeRateClient exchangeRateClient = new ExchangeRateClient() {
-            @Override
-            public double getRate(String from, String to) {
-                if (from.equals("USD") && to.equals("SEK")) {
-                    return 10;
-                }
-                else {
-                    return -1;
-                }
-            }
-        };
-        CheckoutService checkoutService = new CheckoutService(exchangeRateClient);
+        CheckoutService checkoutService = new CheckoutService((from, to) -> {
+            if (from.equals("USD") && to.equals("SEK")) return 10; else return 1;
+        });
 
-        System.out.println("What do you want to purchase?");
+        System.out.println("Vad vill du köpa?");
         System.out.print("Sku: ");
-        String sku = scanner.nextLine();
-        System.out.print("Quantity: ");
+        String sku = scanner.nextLine().trim();
+        System.out.print("Antal: ");
         int quantity = Integer.parseInt(scanner.nextLine());
 
-        checkoutService.calculatePrice(sku, quantity);
+        System.out.println("Totalt pris: " + checkoutService.calculatePrice(sku, quantity));
 
     }
 }
