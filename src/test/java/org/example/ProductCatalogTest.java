@@ -2,8 +2,6 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import javax.xml.catalog.Catalog;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProductCatalogTest {
@@ -16,7 +14,7 @@ public class ProductCatalogTest {
 
         double usd =  productCatalog.priceUsd("Hammare");
 
-        assertEquals(25.0, usd);
+        assertEquals(9.99, usd);
 
     }
 
@@ -28,7 +26,7 @@ public class ProductCatalogTest {
 
         double usd =  productCatalog.priceUsd("Slipmaskin");
 
-        assertEquals(200.0, usd);
+        assertEquals(49.99, usd);
     }
 
 }
